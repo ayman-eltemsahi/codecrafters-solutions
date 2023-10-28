@@ -71,8 +71,8 @@ pub fn write_http_response(stream: &mut TcpStream, response: &HttpResponse) {
 }
 
 #[derive(Debug, Clone)]
-pub struct HttpResponse {
+pub struct HttpResponse<'a> {
     pub status_code: HttpStatusCode,
     pub content_type: HttpContentType,
-    pub content: Option<String>,
+    pub content: Option<&'a str>,
 }

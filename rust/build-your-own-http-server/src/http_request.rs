@@ -46,10 +46,7 @@ impl HttpRequest {
         }
     }
 
-    pub fn get_header(&self, val: &str) -> Option<String> {
-        match self.headers.get(&val.to_lowercase()) {
-            Some(val) => Some(val.to_owned()),
-            None => None,
-        }
+    pub fn get_header(&self, val: &str) -> Option<&String> {
+        self.headers.get(&val.to_lowercase())
     }
 }

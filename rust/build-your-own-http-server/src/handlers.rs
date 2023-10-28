@@ -34,7 +34,7 @@ pub fn handle_echo(stream: &mut TcpStream, http: &HttpRequest) {
     let response = HttpResponse {
         status_code: HttpStatusCode::Ok,
         content_type: HttpContentType::PlainText,
-        content: Some(content.to_string()),
+        content: Some(content),
     };
 
     write_http_response(stream, &response);
@@ -47,7 +47,7 @@ pub fn handle_get_file(stream: &mut TcpStream, http: &HttpRequest) {
             let response = HttpResponse {
                 status_code: HttpStatusCode::Ok,
                 content_type: HttpContentType::ApplicationOctetStream,
-                content: Some(content.to_string()),
+                content: Some(&content),
             };
 
             write_http_response(stream, &response);
